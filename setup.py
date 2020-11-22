@@ -3,7 +3,7 @@ from setuptools import setup, find_packages  # Always prefer setuptools over dis
 from codecs import open  # To use a consistent encoding
 from os import path
 
-import ckanext.external_storage
+import ckanext.blob_storage
 
 here = path.abspath(path.dirname(__file__))
 
@@ -12,19 +12,19 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='''ckanext-external-storage''',
+    name='''ckanext-blob-storage''',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
-    version=ckanext.external_storage.__version__,
+    version=ckanext.blob_storage.__version__,
 
     description='''Store CKAN data files using an external Git LFS based storage microservice''',
     long_description=long_description,
     long_description_content_type='text/markdown',
 
     # The project's main homepage.
-    url='https://github.com/datopian/ckanext-external-storage',
+    url='https://github.com/datopian/ckanext-blob-storage',
 
     # Author details
     author='''Shahar Evron''',
@@ -82,7 +82,8 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        external_storage=ckanext.external_storage.plugin:ExternalStoragePlugin
+        blob_storage=ckanext.blob_storage.plugin:BlobStoragePlugin 
+        external_storage=ckanext.blob_storage.plugin:BlobStoragePlugin
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan

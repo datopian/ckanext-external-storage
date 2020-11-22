@@ -8,7 +8,7 @@ from mock import patch
 
 class FunctionalTestBase(helpers.FunctionalTestBase):
 
-    _load_plugins = ['external_storage']
+    _load_plugins = ['blob_storage']
 
 
 @contextmanager
@@ -27,7 +27,7 @@ def user_context(user):
     def mock_context():
         return context
 
-    with patch('ckanext.external_storage.authz_binding.common.get_user_context', mock_context):
+    with patch('ckanext.blob_storage.authz_binding.common.get_user_context', mock_context):
         yield context
 
 

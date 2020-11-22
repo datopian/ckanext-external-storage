@@ -1,4 +1,4 @@
 include README.rst
 include LICENSE
 include requirements.txt
-recursive-include ckanext/external_storage *.html *.json *.js *.less *.css *.mo
+recursive-include ckanext/blob_storage *.html *.json *.js *.less *.css *.mo

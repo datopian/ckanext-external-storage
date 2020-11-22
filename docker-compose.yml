@@ -1,4 +1,4 @@
-# Docker Compose file for ckanext-external-storage
+# Docker Compose file for ckanext-blob-storage
 # ------------------------------------------------
 # The purpose of this docker-compose file is to simplify setting up a
 # development environment for this CKAN extension; It defines Docker based

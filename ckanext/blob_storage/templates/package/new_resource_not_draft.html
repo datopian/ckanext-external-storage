@@ -3,5 +3,5 @@
 {% set package_id = pkg_dict.id %}
 
 {% block form %}
-  {% snippet 'external_storage/snippets/upload_module.html', pkg_id=package_id, api_key=c.userobj.apikey, base_url=g.site_url, parent=super %}
+  {% snippet 'blob_storage/snippets/upload_module.html', pkg_id=package_id, api_key=c.userobj.apikey, base_url=g.site_url, parent=super %}
 {% endblock %}

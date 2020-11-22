@@ -1,4 +1,4 @@
-"""Template helpers for ckanext-external-storage
+"""Template helpers for ckanext-blob-storage
 """
 from os import path
 from typing import Any, Dict, Optional
@@ -6,8 +6,8 @@ from typing import Any, Dict, Optional
 import ckan.plugins.toolkit as toolkit
 from six.moves.urllib.parse import urlparse
 
-SERVER_URL_CONF_KEY = 'ckanext.external_storage.storage_service_url'
-STORAGE_NAMESPACE_CONF_KEY = 'ckanext.external_storage.storage_namespace'
+SERVER_URL_CONF_KEY = 'ckanext.blob_storage.storage_service_url'
+STORAGE_NAMESPACE_CONF_KEY = 'ckanext.blob_storage.storage_namespace'
 
 
 def resource_storage_prefix(package_name, org_name=None):

@@ -1,6 +1,6 @@
 """Tests for plugin.py
 """
-import ckanext.external_storage.plugin as plugin
+import ckanext.blob_storage.plugin as plugin
 
 
 def test_plugin():
