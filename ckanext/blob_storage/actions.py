@@ -1,4 +1,4 @@
-"""External Storage API actions
+"""Blob Storage API actions
 """
 import ast
 import logging

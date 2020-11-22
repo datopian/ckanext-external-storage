@@ -4,5 +4,5 @@ import ckanext.blob_storage.plugin as plugin
 
 
 def test_plugin():
-    p = plugin.ExternalStoragePlugin()
+    p = plugin.BlobStoragePlugin()
     assert p

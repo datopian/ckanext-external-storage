@@ -83,7 +83,6 @@ setup(
     entry_points='''
         [ckan.plugins]
         blob_storage=ckanext.blob_storage.plugin:BlobStoragePlugin 
-        external_storage=ckanext.blob_storage.plugin:BlobStoragePlugin
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan

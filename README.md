@@ -9,10 +9,10 @@ ckanext-blob-storage
 
 The design is pluggable so one can use all the major storage backends as well as local, cloud based (e.g. S3, Azure Blobs, GCP, etc.) or any other storage. In addition, the service allows clients (typically browsers) to upload and download files directly to storage without passing them through CKAN, which can greatly improve file access efficiency.
 
-Authentication and authorization to the external storage management service is done via JWT tokens provided by
+Authentication and authorization to the blob storage management service is done via JWT tokens provided by
 [`ckanext-authz-service`](https://github.com/datopian/ckanext-authz-service).
 
-Internally, the external storage management service is in fact a Git LFS server
+Internally, the blob storage management service is in fact a Git LFS server
 implementation, which means access via 3rd party Git based tools is also
 potentially possible.
 
@@ -28,19 +28,19 @@ implementations may be configured to work as well.
 Installation
 ------------
 
-To install ckanext-external-storage:
+To install ckanext-blob-storage:
 
 1. Activate your CKAN virtual environment, for example:
 ```
 . /usr/lib/ckan/default/bin/activate
 ```
 
-2. Install the ckanext-external-storage Python package into your virtual environment:
+2. Install the ckanext-blob-storage Python package into your virtual environment:
 ```
-pip install ckanext-external-storage
+pip install ckanext-blob-storage
 ```
 
-3. Add `external_storage` to the `ckan.plugins` setting in your CKAN
+3. Add `blob_storage` to the `ckan.plugins` setting in your CKAN
    config file (by default the config file is located at
    `/etc/ckan/default/production.ini`).
 
@@ -52,9 +52,9 @@ sudo service apache2 reload
 Configuration settings
 ----------------------
 
-`ckanext.external_storage.storage_service_url = 'https://...'`
+`ckanext.blob_storage.storage_service_url = 'https://...'`
 
-Set the URL of the external storage microservice (the Git LFS server). This
+Set the URL of the blob storage microservice (the Git LFS server). This
 must be a URL accessible to browsers connecting to the service.
 
 `ckanext.external_storage.storage_namespace = my-ckan-instance`
@@ -68,12 +68,12 @@ If not specified, `ckan` will be used as the default namespace.
 Developer installation
 ----------------------
 
-To install `ckanext-external-storage` for development, do the following:
+To install `ckanext-blob-storage` for development, do the following:
 
 1. Pull the project code from Github
 ```
-git clone https://github.com/datopian/ckanext-external-storage.git
-cd ckanext-external-storage
+git clone https://github.com/datopian/ckanext-blob-storage.git
+cd ckanext-blob-storage
 ```
 2. Create a Python 2.7 virtual environment (The flag `-p py27` is used to ensure that you are using the right Python version when create the virtualenv).
 ```
@@ -119,31 +119,31 @@ yarn build
 
 3. Replace bundles in `fanstatic` directory
 ```
-rm ckanext/external_storage/fanstatic/js/*
-cp datapub/build/static/js/*.js ckanext/external_storage/fanstatic/js/
+rm ckanext/blob_storage/fanstatic/js/*
+cp datapub/build/static/js/*.js ckanext/blob_storage/fanstatic/js/
 ```
 
 If you also want to re-use stylesheets:
 
 ```
-rm ckanext/external_storage/fanstatic/css/*
-cp datapub/build/static/css/*.css ckanext/external_storage/fanstatic/css/
+rm ckanext/blob_storage/fanstatic/css/*
+cp datapub/build/static/css/*.css ckanext/blob_storage/fanstatic/css/
 ```
 
-4. Now, make sure to update the resources in `templates/external_storage/snippets/upload_module.html`
+4. Now, make sure to update the resources in `templates/blob_storage/snippets/upload_module.html`
 
 ```
-{% resource 'external-storage/css/main.{hash}.chunk.css' %}
+{% resource 'blob-storage/css/main.{hash}.chunk.css' %}
 
-{% resource 'external-storage/js/runtime-main.{hash}.js' %}
-{% resource 'external-storage/js/2.{hash}.chunk.js' %}
-{% resource 'external-storage/js/main.{hash}.chunk.js' %}
+{% resource 'blob-storage/js/runtime-main.{hash}.js' %}
+{% resource 'blob-storage/js/2.{hash}.chunk.js' %}
+{% resource 'blob-storage/js/main.{hash}.chunk.js' %}
 ```
 
 Installing with Docker
 ----------------------
 
-Unlike other CKAN extensions, external storage needs node modules to be installed
+Unlike other CKAN extensions, blob storage needs node modules to be installed
 and build in order to work properly. You will need to install node and npm.
 Below is how your Dockerfile might look like
 
@@ -155,10 +155,10 @@ RUN apt-get -q -y install \
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install nodejs && npm version
 
-# Install ckanext-external-storage
-RUN git clone --branch ${CKANEXT_EXTERNAL_STORAGE_VERSION} https://github.com/datopian/ckanext-external-storage
-RUN pip install --no-cache-dir -r "ckanext-external-storage/requirements.py2.txt"
-RUN pip install -e ckanext-external-storage
+# Install ckanext-blob-storage
+RUN git clone --branch ${CKANEXT_BLOB_STORAGE_VERSION} https://github.com/datopian/ckanext-blob-storage
+RUN pip install --no-cache-dir -r "ckanext-blob-storage/requirements.py2.txt"
+RUN pip install -e ckanext-blob-storage
 
 # Install other extensions
 ...
@@ -258,10 +258,10 @@ coverage installed in your virtualenv (``pip install coverage``) then run:
 
     make coverage
 
-Releasing a new version of ckanext-external-storage
+Releasing a new version of ckanext-blob-storage
 ------------------------------------------------
 
-ckanext-external-storage should be available on PyPI as https://pypi.org/project/ckanext-external-storage.
+ckanext-blob-storage should be available on PyPI as https://pypi.org/project/ckanext-blob-storage.
 To publish a new version to PyPI follow these steps:
 
 1. Update the version number in the `setup.py` file.
