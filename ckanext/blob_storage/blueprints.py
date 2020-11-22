@@ -1,4 +1,4 @@
-"""ckanext-external-storage Flask blueprints
+"""ckanext-blob-storage Flask blueprints
 """
 from ckan.plugins import toolkit
 from flask import Blueprint
