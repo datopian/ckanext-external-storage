@@ -88,7 +88,7 @@ setup(
         ckan = ckan.lib.extract:extract_ckan
         
         [paste.paster_command]
-        migrate-resources = ckanext.external_storage.cli:MigrateResourcesCommand
+        migrate-resources = ckanext.blob_storage.cli:MigrateResourcesCommand
     ''',
 
     # If you are changing from the default layout of your extension, you may

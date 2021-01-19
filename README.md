@@ -57,7 +57,7 @@ Configuration settings
 Set the URL of the blob storage microservice (the Git LFS server). This
 must be a URL accessible to browsers connecting to the service.
 
-`ckanext.external_storage.storage_namespace = my-ckan-instance`
+`ckanext.blob_storage.storage_namespace = my-ckan-instance`
 
 Set the in-storage namespace used for this CKAN instance. This is useful if
 multiple CKAN instances are using the same storage microservice instance, and
