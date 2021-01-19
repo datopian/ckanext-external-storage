@@ -20,8 +20,8 @@ from sqlalchemy.orm import load_only
 from sqlalchemy.orm.attributes import flag_modified
 from werkzeug.wsgi import FileWrapper
 
-from ckanext.external_storage import helpers
-from ckanext.external_storage.download_handler import call_download_handlers
+from ckanext.blob_storage import helpers
+from ckanext.blob_storage.download_handler import call_download_handlers
 
 
 def _log():
