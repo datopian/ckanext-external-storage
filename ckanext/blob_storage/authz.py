@@ -8,7 +8,7 @@ from ckanext.authz_service.authz_binding import resource as resource_authz
 from ckanext.authz_service.authz_binding.common import get_user_context
 from ckanext.authz_service.authzzie import Scope
 
-from ckanext.blob_storage import helpers
+from . import helpers
 
 log = logging.getLogger(__name__)
 
