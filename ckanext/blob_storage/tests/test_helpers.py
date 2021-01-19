@@ -20,14 +20,14 @@ def test_resource_storage_prefix_explicit_org():
 
 
 @pytest.mark.usefixtures('clean_db', 'reset_db')
-@pytest.mark.ckan_config('ckanext.external_storage.storage_namespace', 'some-namespace')
+@pytest.mark.ckan_config('ckanext.blob_storage.storage_namespace', 'some-namespace')
 def test_resource_storage_prefix_unspecified_org():
     prefix = helpers.resource_storage_prefix('mypackage')
     assert 'some-namespace/mypackage' == prefix
 
 
 @pytest.mark.usefixtures('clean_db', 'reset_db')
-@pytest.mark.ckan_config('ckanext.external_storage.storage_namespace', 'some-namespace')
+@pytest.mark.ckan_config('ckanext.blob_storage.storage_namespace', 'some-namespace')
 def test_resource_storage_prefix_no_org():
     factories.Dataset(name='mypackage')
     prefix = helpers.resource_storage_prefix('mypackage')
@@ -44,13 +44,13 @@ def test_resource_authz_scope_custom_actions():
     assert 'obj:myorg/mypackage/*:read' == scope
 
 
-@pytest.mark.ckan_config('ckanext.external_storage.storage_namespace', 'some-namespace')
+@pytest.mark.ckan_config('ckanext.blob_storage.storage_namespace', 'some-namespace')
 def test_resource_authz_scope_default_namespace():
     scope = helpers.resource_authz_scope('mypackage')
     assert 'obj:some-namespace/mypackage/*:read,write' == scope
 
 
-@pytest.mark.ckan_config('ckanext.external_storage.storage_namespace', None)
+@pytest.mark.ckan_config('ckanext.blob_storage.storage_namespace', None)
 def test_resource_authz_scope_no_configured_namespace():
     scope = helpers.resource_authz_scope('mypackage')
     assert 'obj:ckan/mypackage/*:read,write' == scope
